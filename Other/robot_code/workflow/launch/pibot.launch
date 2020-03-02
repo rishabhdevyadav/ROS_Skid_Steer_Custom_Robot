@@ -1,0 +1,84 @@
+<launch>
+  
+<!--   <node ns="R3" name="deca_ard" pkg="ros_ard_deca" type="arduino_deca_node.py" output="screen">
+      <rosparam file="$(find ros_ard_deca)/config/my_arduino_params.yaml" command="load" />
+  </node> -->
+  
+  <!--Start Decawave-->
+  <node ns="R3" name="distances" pkg="pibot" type="get_distances.py" output="screen" >
+    <param name="port" type="string" value="/dev/ttyS0"/>
+    <param name="baud" type="string" value="115200"/>
+  </node>
+  <node ns="R3" name="stp_odom1" pkg="pibot" type="stp_odom.py" output="screen" />
+  <!-- <node ns="R3" name="stp_imu1" pkg="pibot" type="stp_imu.py" output="screen" /> -->
+
+  <!--Start Trilateration-->
+  <node ns="R3" name="decawave" pkg="pibot" type="trilateration_opti.py" output="screen" >
+  <param name="MAX_TAGS" type="string" value="3"/>
+
+<!-- In himalaya -->
+  <!-- <param name="T1" type="string" value="0.0, 0.16"/>   -->
+  <param name="T1" type="string" value="3.58, 0.12"/>
+  <param name="T2" type="string" value="1.12, 5.3"/>
+  <param name="T3" type="string" value="6.33, 4.72"/>
+  
+  <!-- <param name="T3" type="string" value="7.35, 5.3"/> -->
+  <!-- <param name="T2" type="string" value="5.79, 0.0"/> -->
+
+<!-- In lab -->
+<!--   <param name="T1" type="string" value="0.44, 0.18"/>  
+  <param name="T2" type="string" value="4.28, 0.21"/>
+  <param name="T3" type="string" value="7.82, 4.04"/>
+  <param name="T4" type="string" value="0.93, 4.95"/> -->
+  </node>
+  
+  <!--Arduino Activate-->
+  <node ns="R3" name="arduino" pkg="ros_arduino_python" type="arduino_node.py" output="screen">
+      <rosparam file="$(find ros_arduino_python)/config/my_arduino_params.yaml" command="load" />
+  </node>
+
+  <node ns="R3" pkg="tf2_ros" type="static_transform_publisher" name="imu_link" args="0 0 0 0 0 0 r3_base_link_wheel r3_imu_fuse" />
+
+  <!-- Start IMU -->
+  <node ns="R3" name="imu_sens" pkg="pibot" type="imu9250.py" output="screen" />
+
+  <!-- #### Complementary filter -->
+
+  <!-- <node ns="R3" pkg="imu_filter_madgwick"      type="imu_filter_node"           name="imu_filter" output="screen"> -->
+  <node ns="R3" pkg="imu_complementary_filter" type="complementary_filter_node" name="complementary_filter_gain_node" output="screen">
+    <param name="do_bias_estimation" value="true"/>
+    <param name="publish_debug_topics" value="true"/>
+    <param name="do_adaptive_gain" value="true"/>
+    <param name="use_mag" value="true"/>
+    <param name="gain_acc" value="0.08"/>
+    <param name="gain_mag" value="0.7"/>
+  </node>
+
+<!--   <node ns="R3" pkg="robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">
+    <rosparam command="load" file="$(find robot_localization)/params/ekf_template.yaml" />
+    <remap from="odometry/filtered" to="f_odom"/>
+  </node>
+ -->
+
+<node ns="R3" name="Formation" pkg="workflow" type="lf_bio.py" output="screen" >
+    <param name="leader" type="string" value="R8"/>
+    <!-- <param name="L_ijd" type="double" value="0.45"/> -->
+    <param name="L_ijd" type="double" value="0.48"/>
+    <param name="phi_ijd" type="double" value="-135"/> 
+    <!-- <param name="phi_ijd" type="double" value="-80"/>  -->
+    <param name="k1" type="double" value="1.5"/>
+    <param name="k2" type="double" value="1"/>
+    <param name="k3" type="double" value=".025"/>
+    <param name="A" type="double" value="15.0"/>
+    <param name="B" type="double" value="1.0"/>
+    <param name="D" type="double" value="1.0"/>
+    <!-- <param name="k1" type="double" value="2.0"/>
+    <param name="k2" type="double" value="1.8"/>
+    <param name="k3" type="double" value=".05"/>
+    <param name="A" type="double" value="13.0"/>
+    <param name="B" type="double" value="1.0"/>
+    <param name="D" type="double" value="1.0"/> -->
+ </node>
+
+</launch>
+

@@ -1,0 +1,8 @@
+
+<launch>
+   <node ns="R3" name="Piston" pkg="pibot" type="broadcast_piston.py" output="screen" >
+   	<param name="time_to_run" value="5000"/>
+   	<param name="v_target" value="0.0"/>
+   	<param name="w_target" value="-0.00"/>
+   </node>
+</launch>

@@ -1,0 +1,22 @@
+<launch>
+  <node name="driveWheels" pkg="pibot" type="driveWheels.py" output="screen" />
+  <node name="Visual_Odometry" pkg="pibot" type="target_definition.py" output="screen" >
+  	<param name="vel" type="double" value="0.1"/>
+  	<param name="omega" type="double" value="0.0"/>
+ </node>
+  <node name="diffDrive_controller" pkg="pibot" type="diffdrive_controller.py" output="screen" />
+  <node name="odom" pkg="pibot" type="diffdrive_odom.py" output="screen" />
+  <node name="gyro" pkg="pibot" type="gyro.py" output="screen" />
+  <node name="left_control" pkg="pibot" type="Left_PID_Control.py" output="screen" >
+  	<param name="Kp" type="double" value="0.0039"/>
+  	<param name="Ki" type="double" value="0.0001"/>
+  	<param name="Kd" type="double" value="0.0002"/>
+  </node>
+  <node name="right_control" pkg="pibot" type="Right_PID_Control.py" output="screen" >
+  	<param name="Kp" type="double" value="0.00001"/>
+  	<param name="Ki" type="double" value="0.0001"/>
+  	<param name="Kd" type="double" value="0.0002"/>
+  </node>
+  <node name="wheelEncodersLeft" pkg="pibot" type="encoderLp.py" output="screen" />
+  <node name="wheelEncodersRight" pkg="pibot" type="encoderRp.py" output="screen" />
+</launch>

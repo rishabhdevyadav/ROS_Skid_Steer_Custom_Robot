@@ -1,0 +1,14 @@
+<launch>
+<!--   <node ns="Leader" name="VisualOdom" pkg="pibot" type="findVisualOdom.py" output="screen">
+  <param name="ID" type="string" value="001"/>
+  </node> -->
+
+
+<node ns="R1" name="Target" pkg="pibot" type="target_definition.py" output="screen"/>
+
+  <!--Arduino Activate-->
+<!--   <node ns="R1" name="arduino" pkg="ros_arduino_python" type="arduino_node.py" output="screen">
+    <rosparam file="$(find ros_arduino_python)/config/my_arduino_params.yaml" command="load" />
+  </node> -->
+
+</launch>

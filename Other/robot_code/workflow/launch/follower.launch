@@ -1,0 +1,22 @@
+<launch>
+
+    <node ns="R3" name="Formation" pkg="workflow" type="lf_bio.py" output="screen" >
+        <param name="leader" type="string" value="R3"/>
+        <!-- <param name="L_ijd" type="double" value="0.45"/> -->
+        <param name="L_ijd" type="double" value="0.48"/>
+        <param name="phi_ijd" type="double" value="-135"/> 
+        <!-- <param name="phi_ijd" type="double" value="-80"/>  -->
+        <param name="k1" type="double" value="1.5"/>
+        <param name="k2" type="double" value="1"/>
+        <param name="k3" type="double" value=".025"/>
+        <param name="A" type="double" value="15.0"/>
+        <param name="B" type="double" value="1.0"/>
+        <param name="D" type="double" value="1.0"/>
+        <!-- <param name="k1" type="double" value="2.0"/>
+        <param name="k2" type="double" value="1.8"/>
+        <param name="k3" type="double" value=".05"/>
+        <param name="A" type="double" value="13.0"/>
+        <param name="B" type="double" value="1.0"/>
+        <param name="D" type="double" value="1.0"/> -->
+    </node>
+</launch>

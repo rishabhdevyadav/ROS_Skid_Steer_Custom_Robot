@@ -1,0 +1,102 @@
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<meta name="description" content="">
+	
+	<meta name="author" content="">
+	
+	<link rel="icon" href="static/images/aarg.png">
+	
+	<title>Robot Control</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--Fonts-->
+    <link href="static/css/fonts-all.css" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="static/css/font-awesome.css" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="static/css/style.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid" id="wrapper">
+		<div class="row">
+			<nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
+				<h1 class="site-title"><a href="/"><em class="fa fa-android"></em> Minion Control</a></h1>
+				
+				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>	
+				<ul class="nav nav-pills flex-column sidebar-nav">
+					<li class="nav-item"><a class="nav-link active" href="/welcome"><em class="fa fa-home"></em> Welcome <span class="sr-only">(current)</span></a></li>
+					<li class="nav-item"><a class="nav-link" href="/speed_control"><em class="fa fa-cogs"></em> Speed Control</a></li>
+					<li class="nav-item"><a class="nav-link" href="/piston_control"><em class="fa fa-cogs"></em> Piston Control</a></li>
+					<li class="nav-item" ><a class="nav-link" href="/go_to_goal"><em class="fa fa-cogs"></em> Go To Goal</a></li>
+				</ul>
+					
+				<a href="/signout" class="logout-button"><em class="fa fa-power-off"></em> Signout</a></nav>
+			
+			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
+				<header class="page-header row justify-center">
+					<div class="col-md-6 col-lg-8" >
+						<h1 class="float-left text-center text-md-left">Welcome</h1>
+					</div>
+					
+					<div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<img src="static/images/aarg.png" alt="profile photo" class="float-left img-fluid im-thumbnail" width="30" height="auto">
+						
+						<div class="username mt-1">
+							<h4 class="mb-1">{{active_user}}</h4>
+						</div>
+						</a>
+						
+						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
+						     <a class="dropdown-item" href="/signout"><em class="fa fa-power-off mr-1"></em> Logout</a></div>
+					</div>
+					
+					<div class="clear"></div>
+				</header>
+				
+				<section class="row">
+					<div class="container">
+						<h4>Status of all the Robots</h4>
+						<br>
+						<div class="row">
+							{% for n in ips %}
+							<div class="col-md-2">
+								<div class="card" style="width: 10rem;">
+								  <img class="card-img-center" src="static/images/robot.jpg" alt="Card image cap" width="160" height="auto">
+								  <br>
+								  <div class="card-body">
+								    <h5 class="card-title">{{n}}</h5>
+								    {% if botStatus[loop.index0]=="Inactive" %}
+								    <p style="color:red;" class="card-text"><strong>{{botStatus[loop.index0]}}</strong></p>
+								    {% else %}
+								    <p style="color:green;" class="card-text"><strong>{{botStatus[loop.index0]}}</strong></p>
+								    {% endif %}
+								  </div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</section>
+			</main>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="static/js/jquery-3.2.1.min.js"></script>
+    <script src="static/dist/js/bootstrap.min.js"></script>
+    <script src="static/js/bootstrap-datepicker.js"></script>
+    <script src="static/js/custom.js"></script>
+    <script src="static/js/tether.min.js"></script>
+	</body>
+</html>

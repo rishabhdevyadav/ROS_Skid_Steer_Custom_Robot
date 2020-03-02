@@ -1,0 +1,49 @@
+<launch>
+
+    <arg name="override_arduino_port" default="false"/>
+    <node ns="R9" name="arduino" pkg="ros_arduino_python" type="arduino_node.py" output="screen">
+        <rosparam file="$(find ros_arduino_python)/config/my_arduino_params.yaml" command="load" />
+        <param name="override_arduino_port" value="$(arg override_arduino_port)" />
+    </node>
+
+<!--
+  <node ns="R9" name="arduino" pkg="ros_arduino_python" type="arduino_node.py" output="screen">
+      <rosparam file="$(find ros_arduino_python)/config/my_arduino_params.yaml" command="load" />
+  </node>
+-->
+
+    <!-- <node ns="R9" name="stp_odom1" pkg="pibot" type="stp_odom.py" output="screen" /> -->
+    <!-- <node ns="R9" name="stp_imu1" pkg="pibot" type="stp_imu.py" output="screen" /> -->
+
+    <node ns="R9" name="imu_sens" pkg="pibot" type="imu9250.py" output="screen" />
+    <node ns="R9" name="calibrate" pkg="pibot" type="calibrate_init_angle.py" output="screen" />
+
+    <!-- <node ns="R9" pkg="tf2_ros" type="static_transform_publisher" name="imu_link" args="0 0 0 1 0 0 R9_yaw_earth R9_yaw_world" />  -->
+  
+    <node ns="R9" pkg="imu_complementary_filter" type="complementary_filter_node" name="complementary_filter_gain_node" output="screen">
+        <param name="do_bias_estimation" value="false"/>
+        <param name="publish_debug_topics" value="true"/>
+        <param name="do_adaptive_gain" value="false"/>
+        <param name="use_mag" value="true"/>
+        <param name="gain_acc" value="0.08"/>
+        <param name="gain_mag" value="0.7"/>
+    </node>
+
+<!--    <node ns="R9" name="heading_deg" pkg="pibot" type="heading.py" output="screen" />
+-->
+
+    <node ns="R9" name="distances" pkg="pibot" type="get_distances.py" output="screen" >
+        <param name="port" type="string" value="/dev/ttyS0"/>
+        <param name="baud" type="string" value="115200"/>
+    </node>
+
+    <node ns="R9" name="decawave" pkg="pibot" type="trilateration_opti.py" output="screen" >
+        <param name="child_frame_id" type="string" value="R9_base_link_wheel"/>
+        <param name="MAX_TAGS" type="string" value="3"/>
+        <param name="T1" type="string" value="0.00, 2.00"/>
+        <param name="T2" type="string" value="1.50, 0.00"/>
+        <param name="T3" type="string" value="3.00, 2.00"/>
+    </node>
+
+</launch>
+

@@ -1,0 +1,15 @@
+<launch>
+  
+
+  <!--Start Trilateration-->
+  <node ns="R3" name="decawave" pkg="pibot" type="trilateration.py" output="screen" >
+  <param name="MAX_TAGS" type="string" value="3"/>
+  <param name="T1" type="string" value="4.28, 0.12"/>
+  <param name="T2" type="string" value="0.93, 4.95"/>
+  <param name="T3" type="string" value="7.82, 4.02"/>
+  <!-- <param name="T1" type="string" value="6.63, 0.42"/>
+  <param name="T2" type="string" value="0.22, 4.62"/>
+  <param name="T3" type="string" value="7.47, 7.64"/> -->
+  <!-- <param name="T4" type="string" value="0.80, 2.32"/> -->
+  </node>
+</launch>

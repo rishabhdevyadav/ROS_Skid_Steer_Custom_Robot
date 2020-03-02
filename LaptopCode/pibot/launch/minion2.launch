@@ -1,0 +1,106 @@
+<launch>
+
+<!--  <node ns="R1" pkg="robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">
+    <rosparam command="load" file="$(find robot_localization)/params/ekf_template1.yaml" />
+    <remap from="odometry/filtered" to="f_odom"/>
+ </node> 
+ -->
+<!--   <node ns="R9" pkg="robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">
+    <rosparam command="load" file="$(find robot_localization)/params/ekf_template9.yaml" />
+    <remap from="odometry/filtered" to="f_odom"/>
+  </node> -->
+ 
+<!--   <node ns="R4" pkg="robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">
+    <rosparam command="load" file="$(find robot_localization)/params/ekf_template4.yaml" />
+    <remap from="odometry/filtered" to="f_odom"/>
+  </node> -->
+
+<!--   <node ns="R2" pkg="robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">
+    <rosparam command="load" file="$(find robot_localization)/params/ekf_template2.yaml" />
+    <remap from="odometry/filtered" to="f_odom"/>
+  </node>
+ -->
+
+
+
+<!--   <node ns="R1" pkg="imu_complementary_filter" type="complementary_filter_node" name="complementary_filter_gain_node" output="screen">
+        <param name="do_bias_estimation" value="true"/>
+        <param name="publish_debug_topics" value="false"/>
+        <param name="do_adaptive_gain" value="true"/>
+        <param name="use_mag" value="true"/>
+        <param name="gain_acc" value="0.6"/>
+        <param name="gain_mag" value="0.7"/>
+  </node> -->
+
+<!--   <node ns="R9" pkg="imu_complementary_filter" type="complementary_filter_node" name="complementary_filter_gain_node" output="screen">
+        <param name="do_bias_estimation" value="true"/>
+        <param name="publish_debug_topics" value="false"/>
+        <param name="do_adaptive_gain" value="true"/>
+        <param name="use_mag" value="true"/>
+        <param name="gain_acc" value="0.6"/>
+        <param name="gain_mag" value="0.7"/>
+  </node> -->
+
+<!--   <node ns="R4" pkg="imu_complementary_filter" type="complementary_filter_node" name="complementary_filter_gain_node" output="screen">
+        <param name="do_bias_estimation" value="true"/>
+        <param name="publish_debug_topics" value="false"/>
+        <param name="do_adaptive_gain" value="true"/>
+        <param name="use_mag" value="true"/>
+        <param name="gain_acc" value="0.6"/>
+        <param name="gain_mag" value="0.7"/> 
+  </node> -->
+
+ <!--  <node ns="R2" pkg="imu_complementary_filter" type="complementary_filter_node" name="complementary_filter_gain_node" output="screen">
+        <param name="do_bias_estimation" value="true"/>
+        <param name="publish_debug_topics" value="false"/>
+        <param name="do_adaptive_gain" value="true"/>
+        <param name="use_mag" value="true"/>
+        <param name="gain_acc" value="0.6"/>
+        <param name="gain_mag" value="0.7"/>
+  </node>
+ -->
+
+
+
+
+
+<!--   <node ns="R1" name="decawave" pkg="pibot" type="trilateration_optimise1.py" output="screen" >
+        <param name="child_frame_id" type="string" value="R1_base_link_wheel"/>
+        <param name="MAX_TAGS" type="string" value="3"/>
+        <param name="T1" type="string" value="0.00, 2.00"/>
+        <param name="T2" type="string" value="1.50, 0.00"/>
+        <param name="T3" type="string" value="3.00, 2.00"/>
+  </node> -->
+
+<!--   <node ns="R9" name="decawave" pkg="pibot" type="trilateration_optimise9.py" output="screen" >
+        <param name="child_frame_id" type="string" value="R9_base_link_wheel"/>
+        <param name="MAX_TAGS" type="string" value="3"/>
+        <param name="T1" type="string" value="0.00, 2.00"/>
+        <param name="T2" type="string" value="1.50, 0.00"/>
+        <param name="T3" type="string" value="3.00, 2.00"/>
+  </node> -->
+
+<!--   <node ns="R4" name="decawave" pkg="pibot" type="trilateration_optimise4.py" output="screen" >
+        <param name="child_frame_id" type="string" value="R4_base_link_wheel"/>
+        <param name="MAX_TAGS" type="string" value="3"/>
+        <param name="T1" type="string" value="0.00, 2.00"/>
+        <param name="T2" type="string" value="1.50, 0.00"/>
+        <param name="T3" type="string" value="3.00, 2.00"/>
+  </node> -->
+
+<!--   <node ns="R2" name="decawave" pkg="pibot" type="trilateration_optimise2.py" output="screen" >
+        <param name="child_frame_id" type="string" value="R2_base_link_wheel"/>
+        <param name="MAX_TAGS" type="string" value="3"/>
+        <param name="T1" type="string" value="0.00, 2.00"/>
+        <param name="T2" type="string" value="1.50, 0.00"/>
+        <param name="T3" type="string" value="3.00, 2.00"/>
+  </node>
+ -->
+
+
+
+    <node ns="R1" name="tele_opt" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen" />
+
+    <!-- <node ns="R9" name="gen_map" pkg="pibot" type="generate_map.py" output="screen" /> -->
+
+</launch>

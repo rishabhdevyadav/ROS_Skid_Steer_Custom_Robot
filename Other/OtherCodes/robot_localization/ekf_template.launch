@@ -1,0 +1,19 @@
+<launch>
+  <node ns="R3" pkg="robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">
+    <rosparam command="load" file="$(find robot_localization)/params/ekf_template3.yaml" />
+     <!-- Placeholder for output topic remapping -->
+    <remap from="odometry/filtered" to="f_odom"/>
+  </node>
+
+  <node ns="R5" pkg="robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">
+    <rosparam command="load" file="$(find robot_localization)/params/ekf_template5.yaml" />
+     <!-- Placeholder for output topic remapping -->
+    <remap from="odometry/filtered" to="f_odom"/>
+  </node>
+
+  <node ns="R7" pkg="robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">
+    <rosparam command="load" file="$(find robot_localization)/params/ekf_template7.yaml" />
+     <!-- Placeholder for output topic remapping -->
+    <remap from="odometry/filtered" to="f_odom"/>
+  </node>
+</launch>
