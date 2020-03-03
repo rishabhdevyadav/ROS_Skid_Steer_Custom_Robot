@@ -38,8 +38,18 @@
     </node>
 -->
 
-    <node ns="$(arg namespace)" name="stp_odom1" pkg="pibot" type="tf_stp_odom.py" output="screen" />
+<!-- DecaWave -->
+<!--     <node ns="$(arg namespace)" name="stp_odom1" pkg="pibot" type="tf_stp_odom.py" output="screen" />
     <node ns="$(arg namespace)" name="stp_imu1" pkg="pibot" type="tf_world_deca.py" output="screen" />
-    <node ns="$(arg namespace)" name="stp_kalman" pkg="pibot" type="tf_fodom_world.py" output="screen" />
+    <node ns="$(arg namespace)" name="stp_kalman" pkg="pibot" type="tf_fodom_world.py" output="screen" /> -->
+<!-- DecaWave -->
+
+
+<!-- Camera -->
+    <node ns="$(arg namespace)" name="cam_bot" pkg="pibot" type="sus_pub.py" output="screen" />
+    <node ns="$(arg namespace)" name="stp_init" pkg="pibot" type="s_tf.py" output="screen" />
+    <node ns="$(arg namespace)" name="dtp_current" pkg="pibot" type="d_tf.py" output="screen" />
+    <!-- Camera -->
+
 
 </launch>
