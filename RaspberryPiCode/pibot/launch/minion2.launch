@@ -52,4 +52,18 @@
     <!-- Camera -->
 
 
+<!-- Follwer Robot -->
+<!-- <node ns="R3" name="Formation" pkg="pibot" type="lf_bio.py" output="screen" >
+    <param name="leader" type="string" value="R8"/>
+    <param name="L_ijd" type="double" value="0.48"/>
+    <param name="phi_ijd" type="double" value="-135"/> 
+    <param name="k1" type="double" value="1.5"/>
+    <param name="k2" type="double" value="1"/>
+    <param name="k3" type="double" value=".025"/>
+    <param name="A" type="double" value="15.0"/>
+    <param name="B" type="double" value="1.0"/>
+    <param name="D" type="double" value="1.0"/>
+ </node> -->
+
+
 </launch>
