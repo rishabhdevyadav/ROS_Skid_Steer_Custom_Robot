@@ -1,8 +1,0 @@
-
-<launch>
-   <node ns="R3" name="Leader" pkg="workflow" type="target_definition.py" output="screen" >
-   	<param name="time_to_run" value="5000"/>
-   	<param name="vel" value="0.1"/>
-   	<param name="omega" value="-0.00"/>
-   </node>
-</launch>
